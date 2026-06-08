@@ -1,18 +1,18 @@
 import createMDX from "@next/mdx";
 
+// Export estático SOLO cuando lo pides explícitamente (STATIC_EXPORT=1).
+// Así Vercel hace su build normal de Next.js (sin "de-opt" del export)
+// y en local seguimos pudiendo generar la carpeta `out/` con
+// `npm run export` para abrirla con doble clic o subirla a Hostinger.
+const isStaticExport = process.env.STATIC_EXPORT === "1";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Export estático: genera una carpeta `out/` con HTML+CSS+JS puros
-  // que se pueden abrir con doble clic o subir a Hostinger/Netlify/etc.
-  output: "export",
-  // Cada ruta se exporta como /carpeta/index.html — necesario para que los
-  // enlaces internos funcionen al abrir con file:// y para hostings simples.
-  trailingSlash: true,
+  ...(isStaticExport ? { output: "export", trailingSlash: true } : {}),
   pageExtensions: ["ts", "tsx", "mdx"],
   images: {
-    // En export estático no hay servidor de optimización: las imágenes
-    // se sirven tal cual desde /public.
-    unoptimized: true,
+    // En export estático no hay servidor de optimización; en Vercel sí.
+    unoptimized: isStaticExport,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "m.media-amazon.com" },
