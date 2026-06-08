@@ -14,23 +14,44 @@ Web profesional de afiliación para Amazon Associates, especializada en montar u
 - **JSON-LD Schema.org**: `Organization`, `WebSite`, `BreadcrumbList`, `ItemList`/`Product`, `FAQPage`, `Article`
 - Sin dependencias innecesarias (sin librerías de animación, sin UI kits)
 
-## Arrancar en local
+## Cómo ver la web en local
+
+Hay dos formas, según para qué la necesites.
+
+### A) Previsualización rápida (sin instalar nada, sin editar)
+
+Ya hay una carpeta `out/` con la web ya construida en HTML estático. Doble clic a este archivo:
+
+```
+D:\CLAUDE\Pagina WEB\GymEnCasa\out\Abrir-GymEnCasa.bat
+```
+
+Se abre solo en el navegador, en **[http://localhost:5050/](http://localhost:5050/)**. Cierra la ventana negra cuando quieras parar.
+
+> Requiere tener Python instalado (gratis: <https://www.python.org/downloads/>).
+
+### B) Modo desarrollo (si vas a editar código)
+
+Si vas a tocar productos, blog o diseño y quieres ver los cambios al instante:
 
 ```bash
-npm install
+npm install      # solo la primera vez
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000).
+Abre **[http://localhost:3000](http://localhost:3000)** (si ese puerto está ocupado, Next.js usará 3001 automáticamente — lo verás en la terminal).
 
-## Build de producción
+En este modo, cada vez que guardes un archivo el navegador se refresca solo.
+
+## Generar de nuevo la carpeta out/ (web estática)
+
+Si has cambiado algo y quieres re-generar los HTML estáticos:
 
 ```bash
 npm run build
-npm start
 ```
 
-`npm run build` debe pasar **sin errores de TypeScript**.
+Se actualiza la carpeta `out/`. Útil para subir a Hostinger por FTP.
 
 ## Estructura de carpetas
 
