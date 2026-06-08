@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================
+   Tokens base — la skill recomienda definir easings reutilizables
+   ============================================================= */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: theme("colors.bg.DEFAULT");
+  color: theme("colors.ink.DEFAULT");
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip; /* clip — no hidden, no rompe sticky */
+}
+
+::selection {
+  background: theme("colors.flame.500");
+  color: theme("colors.bg.DEFAULT");
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.flame.400");
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Defensa preventiva (gotcha A.4.5 de la skill) — aunque aquí no usamos
+   split-text por defecto, dejamos el patrón listo */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal[data-split] {
+  opacity: 1;
+  transform: none;
+}
+
+/* prose para artículos MDX */
+.prose-fitness {
+  max-width: 70ch;
+  margin-inline: auto;
+  color: theme("colors.ink.DEFAULT");
+}
+.prose-fitness h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 2.2rem 0 0.8rem;
+  color: theme("colors.ink.DEFAULT");
+}
+.prose-fitness h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  margin: 1.6rem 0 0.6rem;
+}
+.prose-fitness p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  color: theme("colors.ink.mute");
+  text-wrap: pretty;
+}
+.prose-fitness ul,
+.prose-fitness ol {
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+  color: theme("colors.ink.mute");
+}
+.prose-fitness li {
+  margin-bottom: 0.4rem;
+}
+.prose-fitness a {
+  color: theme("colors.flame.300");
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.prose-fitness blockquote {
+  border-left: 2px solid theme("colors.flame.500");
+  padding-left: 1rem;
+  font-style: italic;
+  color: theme("colors.ink.DEFAULT");
+  margin: 1.4rem 0;
+}
+.prose-fitness strong {
+  color: theme("colors.ink.DEFAULT");
+}
+
+/* Reducir SOLO efectos intrusivos (gotcha A.2) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-meshDrift,
+  .animate-floatY {
+    animation: none !important;
+  }
+}

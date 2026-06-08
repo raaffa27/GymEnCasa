@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Imagen de producto pendiente">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1713"/>
+      <stop offset="100%" stop-color="#0b0a08"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb547"/>
+      <stop offset="100%" stop-color="#ff6a00"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g transform="translate(300 300)" stroke="url(#flame)" stroke-width="3" fill="none" opacity="0.85">
+    <circle r="160"/>
+    <circle r="110" opacity="0.55"/>
+    <circle r="60" opacity="0.3"/>
+  </g>
+  <g transform="translate(300 300)" fill="url(#flame)" opacity="0.9">
+    <path d="M-22 -34 L18 -34 L8 -8 L26 -8 L-12 38 L-2 0 L-22 0 Z"/>
+  </g>
+  <text x="300" y="540" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#f4ead5" opacity="0.55" letter-spacing="3">GYMENCASA</text>
+</svg>
