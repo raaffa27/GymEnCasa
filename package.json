@@ -10,13 +10,13 @@
     "export": "cross-env STATIC_EXPORT=1 next build"
   },
   "dependencies": {
-    "@next/mdx": "^15.0.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^15.0.0",
     "@types/mdx": "^2.0.13",
     "gray-matter": "^4.0.3",
     "next": "^15.0.3",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
